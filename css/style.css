@@ -66,6 +66,55 @@ body {
   to   { opacity: 1;    transform: translateX(-50%) scale(1.06); }
 }
 
+/* aurora: giant blurred color fields drifting behind the translucent shell */
+.aurora {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.aurora span {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(110px);
+  will-change: transform;
+}
+
+.aurora .a1 {
+  width: 60vw; height: 44vh; left: -12vw; top: 16vh;
+  background: radial-gradient(ellipse, rgba(80, 120, 210, 0.17) 0%, transparent 70%);
+  animation: auroraA 46s ease-in-out infinite alternate;
+}
+
+.aurora .a2 {
+  width: 54vw; height: 42vh; right: -14vw; top: 50vh;
+  background: radial-gradient(ellipse, rgba(127, 168, 255, 0.11) 0%, transparent 70%);
+  animation: auroraB 58s ease-in-out infinite alternate;
+}
+
+.aurora .a3 {
+  width: 46vw; height: 38vh; left: 26vw; top: 76vh;
+  background: radial-gradient(ellipse, rgba(56, 88, 180, 0.14) 0%, transparent 70%);
+  animation: auroraC 52s ease-in-out infinite alternate;
+}
+
+@keyframes auroraA {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(9vw, -6vh) scale(1.15); }
+}
+
+@keyframes auroraB {
+  from { transform: translate(0, 0) scale(1.05); }
+  to   { transform: translate(-8vw, 5vh) scale(0.92); }
+}
+
+@keyframes auroraC {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(6vw, -8vh) scale(1.12); }
+}
+
 .grain {
   position: fixed;
   inset: 0;
@@ -82,9 +131,10 @@ body {
   z-index: 2;
   margin: var(--shell-gap);
   margin-top: 70px;
+  /* translucent: the starfield and aurora drift through faintly */
   background:
     radial-gradient(ellipse 70% 34% at 50% 0%, rgba(90, 130, 220, 0.16) 0%, transparent 60%),
-    var(--shell);
+    rgba(7, 7, 12, 0.8);
   border: 1px solid var(--line);
   border-radius: var(--radius);
   overflow: clip;
@@ -915,6 +965,7 @@ h2 em, h3 em, .hero-sub em {
   html { scroll-behavior: auto; }
   .marquee-track { animation: none; flex-wrap: wrap; width: auto; }
   .halo { animation: none; }
+  .aurora span { animation: none; }
   .scroll-line { animation: none; }
   .reveal { opacity: 1; transform: none; }
 }
