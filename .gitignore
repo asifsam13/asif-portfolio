@@ -1,0 +1,16 @@
+# raw working material — not part of the deployed site (root-anchored;
+# /CAROUSEL/ must not catch assets/carousel/ on case-insensitive Windows)
+/footage/
+/videos/
+/CAROUSEL/
+/ABOUT ME.mp4
+/music.mp3.mp3
+
+# agent/tooling config
+.claude/
+.agents/
+skills-lock.json
+
+# misc
+*.log
+node_modules/
