@@ -1067,13 +1067,46 @@ h2 em, h3 em, .hero-sub em {
   inset: 0;
   border-radius: inherit;
   pointer-events: none;
-  background: radial-gradient(240px circle at var(--mx, 50%) var(--my, 50%),
-    rgba(127, 168, 255, 0.12) 0%, rgba(127, 168, 255, 0.04) 40%, transparent 65%);
+  background: radial-gradient(260px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(127, 168, 255, 0.065) 0%, rgba(127, 168, 255, 0.02) 45%, transparent 68%);
   opacity: 0;
   transition: opacity 0.35s;
 }
 
 .glow-card:hover::after { opacity: 1; }
+
+/* shine sweep across buttons on hover */
+.btn { position: relative; overflow: hidden; }
+
+.btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -85%;
+  width: 55%;
+  height: 100%;
+  background: linear-gradient(100deg, transparent, rgba(160, 190, 255, 0.38), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.55s ease;
+  pointer-events: none;
+}
+
+.btn:hover::before { left: 130%; }
+
+/* scroll progress: a thread of starlight along the top edge */
+#scrollProgress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  z-index: 70;
+  pointer-events: none;
+  background: linear-gradient(90deg, #7fa8ff, #bcd0ff);
+  box-shadow: 0 0 12px rgba(127, 168, 255, 0.65);
+  transform-origin: 0 0;
+  transform: scaleX(0);
+}
 
 .hero-name {
   background: linear-gradient(110deg,
@@ -1085,7 +1118,7 @@ h2 em, h3 em, .hero-sub em {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: nameShimmer 9s ease-in-out infinite;
+  animation: nameShimmer 4s ease-in-out infinite;
 }
 
 @keyframes nameShimmer {

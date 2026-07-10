@@ -69,7 +69,7 @@ const ytEmbed = (id) => `https://www.youtube-nocookie.com/embed/${id}?autoplay=1
     if (!prefersReducedMotion) {
       if (t > nextMeteorAt) {
         meteors.push(spawnMeteor());
-        nextMeteorAt = t + 3500 + Math.random() * 5500;
+        nextMeteorAt = t + 5000; // one shooting star every 5 seconds
       }
       meteors = meteors.filter((m) => m.life > 0);
       for (const m of meteors) {
@@ -106,56 +106,61 @@ const ytEmbed = (id) => `https://www.youtube-nocookie.com/embed/${id}?autoplay=1
   requestAnimationFrame(frame);
 })();
 
-/* ---------- stardust: soft particle trail following the cursor ---------- */
+/* ---------- lantern: a soft light that drifts after the cursor ---------- */
 
-(function stardust() {
+(function lantern() {
   if (prefersReducedMotion || !window.matchMedia("(pointer: fine)").matches) return;
-  const canvas = document.createElement("canvas");
-  canvas.id = "stardust";
-  canvas.setAttribute("aria-hidden", "true");
-  canvas.style.cssText = "position:fixed;inset:0;z-index:55;pointer-events:none;";
-  document.body.appendChild(canvas);
-  const ctx = canvas.getContext("2d");
-  let w, h;
-  const dust = [];
-  let lastSpawn = 0;
+  const el = document.createElement("div");
+  el.setAttribute("aria-hidden", "true");
+  el.style.cssText =
+    "position:fixed;left:0;top:0;width:560px;height:560px;margin:-280px 0 0 -280px;" +
+    "pointer-events:none;z-index:55;border-radius:50%;mix-blend-mode:screen;" +
+    "background:radial-gradient(circle, rgba(127,168,255,0.07) 0%, rgba(127,168,255,0.028) 40%, transparent 70%);" +
+    "opacity:0;transition:opacity 0.6s;will-change:transform;";
+  document.body.appendChild(el);
 
-  function resize() { w = canvas.width = innerWidth; h = canvas.height = innerHeight; }
-  resize();
-  addEventListener("resize", resize);
-
-  addEventListener("mousemove", (e) => {
-    const now = performance.now();
-    if (now - lastSpawn < 40 || dust.length > 70) return;
-    lastSpawn = now;
-    dust.push({
-      x: e.clientX + (Math.random() - 0.5) * 14,
-      y: e.clientY + (Math.random() - 0.5) * 14,
-      vx: (Math.random() - 0.5) * 0.5,
-      vy: 0.25 + Math.random() * 0.5,
-      size: 0.8 + Math.random() * 1.6,
-      life: 1,
-      hue: Math.random() < 0.75 ? "220, 233, 255" : "160, 190, 255",
-    });
-  }, { passive: true });
+  let tx = innerWidth / 2, ty = innerHeight / 2, x = tx, y = ty;
+  addEventListener("mousemove", (e) => { tx = e.clientX; ty = e.clientY; el.style.opacity = 1; }, { passive: true });
+  document.documentElement.addEventListener("mouseleave", () => (el.style.opacity = 0));
 
   (function tick() {
-    ctx.clearRect(0, 0, w, h);
-    for (let i = dust.length - 1; i >= 0; i--) {
-      const p = dust[i];
-      p.x += p.vx;
-      p.y += p.vy;
-      p.life -= 0.018;
-      if (p.life <= 0) { dust.splice(i, 1); continue; }
-      ctx.globalAlpha = p.life * 0.7;
-      ctx.fillStyle = `rgba(${p.hue}, 1)`;
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.size * p.life, 0, Math.PI * 2);
-      ctx.fill();
-    }
-    ctx.globalAlpha = 1;
+    x += (tx - x) * 0.07; // trails gently behind the cursor
+    y += (ty - y) * 0.07;
+    el.style.transform = `translate(${x.toFixed(1)}px, ${y.toFixed(1)}px)`;
     requestAnimationFrame(tick);
   })();
+})();
+
+/* ---------- scroll progress: a thread of starlight along the top ---------- */
+
+(function scrollProgress() {
+  const bar = document.createElement("div");
+  bar.id = "scrollProgress";
+  bar.setAttribute("aria-hidden", "true");
+  document.body.appendChild(bar);
+  const update = () => {
+    const max = document.documentElement.scrollHeight - innerHeight;
+    bar.style.transform = `scaleX(${max > 0 ? Math.min(1, scrollY / max) : 0})`;
+  };
+  addEventListener("scroll", update, { passive: true });
+  addEventListener("resize", update, { passive: true });
+  update();
+})();
+
+/* ---------- tilt: media tiles lean toward the cursor ---------- */
+
+(function tilt() {
+  if (prefersReducedMotion || !window.matchMedia("(pointer: fine)").matches) return;
+  document.querySelectorAll(".media-tile").forEach((tile) => {
+    tile.addEventListener("mousemove", (e) => {
+      const r = tile.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width - 0.5;
+      const py = (e.clientY - r.top) / r.height - 0.5;
+      tile.style.transform =
+        `perspective(700px) translateY(-5px) rotateX(${(-py * 6).toFixed(2)}deg) rotateY(${(px * 6).toFixed(2)}deg)`;
+    }, { passive: true });
+    tile.addEventListener("mouseleave", () => { tile.style.transform = ""; });
+  });
 })();
 
 /* ---------- card glow: a soft light that follows the cursor inside cards ---------- */
@@ -163,7 +168,7 @@ const ytEmbed = (id) => `https://www.youtube-nocookie.com/embed/${id}?autoplay=1
 (function cardGlow() {
   if (!window.matchMedia("(pointer: fine)").matches) return;
   const cards = document.querySelectorAll(
-    ".door, .service-card, .cert-card, .spec-card, .path-card, .work-card, .project, .case, .proof-item"
+    ".door, .service-card, .cert-card, .spec-card, .path-card, .work-card, .project, .case, .proof-item, .t-card, .pipe-step"
   );
   cards.forEach((card) => {
     card.classList.add("glow-card");
