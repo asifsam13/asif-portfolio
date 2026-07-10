@@ -20,7 +20,7 @@ const ytEmbed = (id) => `https://www.youtube-nocookie.com/embed/${id}?autoplay=1
     h = canvas.height = innerHeight;
     cx = w / 2;
     cy = -h * 0.25; // spiral center sits above the viewport, like the reference
-    stars = Array.from({ length: Math.min(360, (w * h) / 6000) }, () => spawn());
+    stars = Array.from({ length: Math.min(520, (w * h) / 4200) }, () => spawn());
   }
 
   function spawn() {
@@ -28,8 +28,8 @@ const ytEmbed = (id) => `https://www.youtube-nocookie.com/embed/${id}?autoplay=1
     return {
       r,
       a: Math.random() * Math.PI * 2,
-      size: Math.random() * 1.6 + 0.3,
-      speed: (0.00028 + Math.random() * 0.00045) * (prefersReducedMotion ? 0 : 1),
+      size: Math.random() * 2.1 + 0.5,
+      speed: (0.0005 + Math.random() * 0.0008) * (prefersReducedMotion ? 0 : 1),
       tw: Math.random() * Math.PI * 2,
     };
   }
@@ -41,9 +41,9 @@ const ytEmbed = (id) => `https://www.youtube-nocookie.com/embed/${id}?autoplay=1
       const x = cx + Math.cos(s.a) * s.r;
       const y = cy + Math.sin(s.a) * s.r * 0.82;
       if (y < -20 || y > h + 20 || x < -20 || x > w + 20) continue;
-      const twinkle = 0.55 + 0.45 * Math.sin(t / 900 + s.tw);
-      ctx.globalAlpha = twinkle * 0.9;
-      ctx.fillStyle = "#cfe0ff";
+      const twinkle = 0.6 + 0.4 * Math.sin(t / 700 + s.tw);
+      ctx.globalAlpha = twinkle;
+      ctx.fillStyle = "#dbe7ff";
       ctx.beginPath();
       ctx.arc(x, y, s.size, 0, Math.PI * 2);
       ctx.fill();

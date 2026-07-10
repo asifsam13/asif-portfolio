@@ -78,41 +78,52 @@ body {
 .aurora span {
   position: absolute;
   border-radius: 50%;
-  filter: blur(110px);
+  filter: blur(90px);
   will-change: transform;
 }
 
 .aurora .a1 {
-  width: 60vw; height: 44vh; left: -12vw; top: 16vh;
-  background: radial-gradient(ellipse, rgba(80, 120, 210, 0.17) 0%, transparent 70%);
-  animation: auroraA 46s ease-in-out infinite alternate;
+  width: 70vw; height: 54vh; left: -16vw; top: 12vh;
+  background: radial-gradient(ellipse, rgba(88, 130, 225, 0.38) 0%, rgba(60, 95, 190, 0.14) 50%, transparent 72%);
+  animation: auroraA 30s ease-in-out infinite alternate;
 }
 
 .aurora .a2 {
-  width: 54vw; height: 42vh; right: -14vw; top: 50vh;
-  background: radial-gradient(ellipse, rgba(127, 168, 255, 0.11) 0%, transparent 70%);
-  animation: auroraB 58s ease-in-out infinite alternate;
+  width: 62vw; height: 50vh; right: -18vw; top: 44vh;
+  background: radial-gradient(ellipse, rgba(127, 168, 255, 0.28) 0%, rgba(90, 125, 220, 0.10) 52%, transparent 72%);
+  animation: auroraB 38s ease-in-out infinite alternate;
 }
 
 .aurora .a3 {
-  width: 46vw; height: 38vh; left: 26vw; top: 76vh;
-  background: radial-gradient(ellipse, rgba(56, 88, 180, 0.14) 0%, transparent 70%);
-  animation: auroraC 52s ease-in-out infinite alternate;
+  width: 54vw; height: 46vh; left: 22vw; top: 70vh;
+  background: radial-gradient(ellipse, rgba(64, 100, 205, 0.32) 0%, rgba(50, 80, 170, 0.12) 50%, transparent 72%);
+  animation: auroraC 34s ease-in-out infinite alternate;
+}
+
+.aurora .a4 {
+  width: 40vw; height: 34vh; left: 42vw; top: 26vh;
+  background: radial-gradient(ellipse, rgba(150, 185, 255, 0.16) 0%, transparent 70%);
+  animation: auroraD 26s ease-in-out infinite alternate;
 }
 
 @keyframes auroraA {
   from { transform: translate(0, 0) scale(1); }
-  to   { transform: translate(9vw, -6vh) scale(1.15); }
+  to   { transform: translate(14vw, -9vh) scale(1.22); }
 }
 
 @keyframes auroraB {
-  from { transform: translate(0, 0) scale(1.05); }
-  to   { transform: translate(-8vw, 5vh) scale(0.92); }
+  from { transform: translate(0, 0) scale(1.08); }
+  to   { transform: translate(-13vw, 8vh) scale(0.88); }
 }
 
 @keyframes auroraC {
   from { transform: translate(0, 0) scale(1); }
-  to   { transform: translate(6vw, -8vh) scale(1.12); }
+  to   { transform: translate(10vw, -12vh) scale(1.18); }
+}
+
+@keyframes auroraD {
+  from { transform: translate(0, 0) scale(0.9); }
+  to   { transform: translate(-9vw, 10vh) scale(1.15); }
 }
 
 .grain {
@@ -131,10 +142,10 @@ body {
   z-index: 2;
   margin: var(--shell-gap);
   margin-top: 70px;
-  /* translucent: the starfield and aurora drift through faintly */
+  /* translucent: the starfield and aurora drift through clearly */
   background:
     radial-gradient(ellipse 70% 34% at 50% 0%, rgba(90, 130, 220, 0.16) 0%, transparent 60%),
-    rgba(7, 7, 12, 0.8);
+    rgba(7, 7, 12, 0.62);
   border: 1px solid var(--line);
   border-radius: var(--radius);
   overflow: clip;
