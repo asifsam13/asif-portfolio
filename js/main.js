@@ -34,6 +34,23 @@ const ytEmbed = (id) => `https://www.youtube-nocookie.com/embed/${id}?autoplay=1
     };
   }
 
+  /* shooting stars: occasional meteors streaking down through the field */
+  let meteors = [];
+  let nextMeteorAt = 2500;
+
+  function spawnMeteor() {
+    const fromLeft = Math.random() < 0.5;
+    const angle = (fromLeft ? 0.35 : Math.PI - 0.35) + (Math.random() - 0.5) * 0.25;
+    return {
+      x: Math.random() * w,
+      y: Math.random() * h * 0.45,
+      vx: Math.cos(angle) * (9 + Math.random() * 7) * (fromLeft ? 1 : -1) * -1,
+      vy: Math.sin(angle) * (9 + Math.random() * 7),
+      life: 1,
+      tail: 90 + Math.random() * 70,
+    };
+  }
+
   function frame(t) {
     ctx.clearRect(0, 0, w, h);
     for (const s of stars) {
@@ -48,6 +65,38 @@ const ytEmbed = (id) => `https://www.youtube-nocookie.com/embed/${id}?autoplay=1
       ctx.arc(x, y, s.size, 0, Math.PI * 2);
       ctx.fill();
     }
+
+    if (!prefersReducedMotion) {
+      if (t > nextMeteorAt) {
+        meteors.push(spawnMeteor());
+        nextMeteorAt = t + 3500 + Math.random() * 5500;
+      }
+      meteors = meteors.filter((m) => m.life > 0);
+      for (const m of meteors) {
+        m.x += m.vx;
+        m.y += m.vy;
+        m.life -= 0.016;
+        const tx = m.x - m.vx * (m.tail / 10);
+        const ty = m.y - m.vy * (m.tail / 10);
+        const grad = ctx.createLinearGradient(m.x, m.y, tx, ty);
+        grad.addColorStop(0, `rgba(220, 233, 255, ${0.9 * m.life})`);
+        grad.addColorStop(0.3, `rgba(150, 185, 255, ${0.45 * m.life})`);
+        grad.addColorStop(1, "rgba(120, 160, 255, 0)");
+        ctx.globalAlpha = 1;
+        ctx.strokeStyle = grad;
+        ctx.lineWidth = 2;
+        ctx.lineCap = "round";
+        ctx.beginPath();
+        ctx.moveTo(m.x, m.y);
+        ctx.lineTo(tx, ty);
+        ctx.stroke();
+        ctx.fillStyle = `rgba(235, 243, 255, ${m.life})`;
+        ctx.beginPath();
+        ctx.arc(m.x, m.y, 2.4, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
     ctx.globalAlpha = 1;
     requestAnimationFrame(frame);
   }
@@ -55,6 +104,75 @@ const ytEmbed = (id) => `https://www.youtube-nocookie.com/embed/${id}?autoplay=1
   resize();
   addEventListener("resize", resize);
   requestAnimationFrame(frame);
+})();
+
+/* ---------- stardust: soft particle trail following the cursor ---------- */
+
+(function stardust() {
+  if (prefersReducedMotion || !window.matchMedia("(pointer: fine)").matches) return;
+  const canvas = document.createElement("canvas");
+  canvas.id = "stardust";
+  canvas.setAttribute("aria-hidden", "true");
+  canvas.style.cssText = "position:fixed;inset:0;z-index:55;pointer-events:none;";
+  document.body.appendChild(canvas);
+  const ctx = canvas.getContext("2d");
+  let w, h;
+  const dust = [];
+  let lastSpawn = 0;
+
+  function resize() { w = canvas.width = innerWidth; h = canvas.height = innerHeight; }
+  resize();
+  addEventListener("resize", resize);
+
+  addEventListener("mousemove", (e) => {
+    const now = performance.now();
+    if (now - lastSpawn < 40 || dust.length > 70) return;
+    lastSpawn = now;
+    dust.push({
+      x: e.clientX + (Math.random() - 0.5) * 14,
+      y: e.clientY + (Math.random() - 0.5) * 14,
+      vx: (Math.random() - 0.5) * 0.5,
+      vy: 0.25 + Math.random() * 0.5,
+      size: 0.8 + Math.random() * 1.6,
+      life: 1,
+      hue: Math.random() < 0.75 ? "220, 233, 255" : "160, 190, 255",
+    });
+  }, { passive: true });
+
+  (function tick() {
+    ctx.clearRect(0, 0, w, h);
+    for (let i = dust.length - 1; i >= 0; i--) {
+      const p = dust[i];
+      p.x += p.vx;
+      p.y += p.vy;
+      p.life -= 0.018;
+      if (p.life <= 0) { dust.splice(i, 1); continue; }
+      ctx.globalAlpha = p.life * 0.7;
+      ctx.fillStyle = `rgba(${p.hue}, 1)`;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size * p.life, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+    requestAnimationFrame(tick);
+  })();
+})();
+
+/* ---------- card glow: a soft light that follows the cursor inside cards ---------- */
+
+(function cardGlow() {
+  if (!window.matchMedia("(pointer: fine)").matches) return;
+  const cards = document.querySelectorAll(
+    ".door, .service-card, .cert-card, .spec-card, .path-card, .work-card, .project, .case, .proof-item"
+  );
+  cards.forEach((card) => {
+    card.classList.add("glow-card");
+    card.addEventListener("mousemove", (e) => {
+      const r = card.getBoundingClientRect();
+      card.style.setProperty("--mx", (e.clientX - r.left) + "px");
+      card.style.setProperty("--my", (e.clientY - r.top) + "px");
+    }, { passive: true });
+  });
 })();
 
 /* ---------- hero video: local showreel, else Drive embed ---------- */

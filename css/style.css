@@ -291,7 +291,8 @@ h2 em, h3 em, .hero-sub em {
   line-height: 1;
   letter-spacing: -0.015em;
   margin: 26px 0 18px;
-  text-shadow: 0 0 60px rgba(120, 160, 255, 0.25);
+  /* glow via drop-shadow so it works with the background-clip shimmer */
+  filter: drop-shadow(0 0 32px rgba(120, 160, 255, 0.28));
 }
 
 .hero-sub {
@@ -1054,6 +1055,47 @@ h2 em, h3 em, .hero-sub em {
 
 @media (max-width: 1024px) {
   .door-grid, .spec-grid { grid-template-columns: 1fr; }
+}
+
+/* ---------- mystical layer: card glow + headline shimmer ---------- */
+
+.glow-card { position: relative; }
+
+.glow-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(240px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(127, 168, 255, 0.12) 0%, rgba(127, 168, 255, 0.04) 40%, transparent 65%);
+  opacity: 0;
+  transition: opacity 0.35s;
+}
+
+.glow-card:hover::after { opacity: 1; }
+
+.hero-name {
+  background: linear-gradient(110deg,
+    var(--text) 0%, var(--text) 42%,
+    #bcd0ff 50%,
+    var(--text) 58%, var(--text) 100%);
+  background-size: 250% 100%;
+  background-position: 120% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: nameShimmer 9s ease-in-out infinite;
+}
+
+@keyframes nameShimmer {
+  0%, 55% { background-position: 120% 0; }
+  85%, 100% { background-position: -130% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-name { animation: none; }
+  .glow-card::after { display: none; }
 }
 
 /* ---------- reveal defaults (animated by GSAP) ---------- */
