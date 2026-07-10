@@ -922,6 +922,129 @@ h2 em, h3 em, .hero-sub em {
   cursor: pointer;
 }
 
+/* ---------- hub doors (three specialty sites) ---------- */
+
+.door-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 clamp(22px, 5vw, 60px);
+}
+
+.door {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 40px 34px 34px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  text-decoration: none;
+  color: var(--text);
+  overflow: hidden;
+  transition: transform 0.35s ease, border-color 0.35s, box-shadow 0.35s;
+}
+
+.door::before {
+  content: "";
+  position: absolute;
+  top: -60%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 130%;
+  height: 90%;
+  border-radius: 50%;
+  filter: blur(60px);
+  background: radial-gradient(ellipse, rgba(127, 168, 255, 0.14) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.door:hover {
+  transform: translateY(-8px);
+  border-color: rgba(140, 175, 255, 0.45);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.5), 0 0 50px rgba(90, 130, 230, 0.12);
+}
+
+.door:hover::before { opacity: 1; }
+
+.door-num { font-family: var(--serif); font-size: 17px; color: var(--accent); }
+
+.door h2 {
+  font-size: clamp(28px, 2.6vw, 36px);
+  margin: 0;
+  line-height: 1.1;
+}
+
+.door p { color: var(--muted); font-size: 14.5px; }
+
+.door ul { list-style: none; margin-top: 4px; display: flex; flex-direction: column; gap: 8px; }
+
+.door li {
+  font-size: 13px;
+  color: var(--muted);
+  padding-left: 18px;
+  position: relative;
+}
+
+.door li::before { content: "\2192"; position: absolute; left: 0; color: var(--accent); font-size: 12px; }
+
+.door-cta {
+  margin-top: auto;
+  padding-top: 22px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.door:hover .door-cta { color: var(--accent); }
+
+.hub-all {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.hub-all a { color: var(--text); text-decoration: underline; text-underline-offset: 4px; transition: color 0.25s; }
+
+.hub-all a:hover { color: var(--accent); }
+
+/* ---------- specs strip (turnaround, formats) ---------- */
+
+.spec-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.spec-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 28px;
+}
+
+.spec-card h3 { font-family: var(--serif); font-weight: 400; font-size: 23px; margin-bottom: 16px; }
+
+.spec-card dl div { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--line); }
+
+.spec-card dl div:last-child { border-bottom: 0; }
+
+.spec-card dt { font-size: 13px; color: var(--muted); }
+
+.spec-card dd { font-size: 13.5px; font-weight: 600; text-align: right; }
+
+@media (max-width: 1024px) {
+  .door-grid, .spec-grid { grid-template-columns: 1fr; }
+}
+
 /* ---------- reveal defaults (animated by GSAP) ---------- */
 
 .reveal { opacity: 0; transform: translateY(28px); }

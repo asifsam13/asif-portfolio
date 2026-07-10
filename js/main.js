@@ -99,6 +99,7 @@ const lightboxAPI = (function lightbox() {
   const lightbox = document.getElementById("lightbox");
   const frame = document.getElementById("lightboxFrame");
   const close = document.getElementById("lightboxClose");
+  if (!lightbox || !frame || !close) return { open: () => {} }; // page has no lightbox
 
   function open(mode, content, tall = false) {
     frame.className = "lightbox-frame" + (tall ? " tall" : "") + (mode === "image" ? " image" : "");
