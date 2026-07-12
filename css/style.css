@@ -188,7 +188,7 @@ body {
   font-size: 16px;
   color: var(--text);
   background: rgba(255, 255, 255, 0.08);
-  padding: 7px 13px;
+  padding: 10px 15px;
 }
 
 .pill-nav .nav-cta {
@@ -1163,6 +1163,21 @@ h2 em, h3 em, .hero-sub em {
 
 .evidence-row { display: flex; flex-wrap: wrap; gap: 14px; margin: 4px 0 18px; }
 
+.evidence-slot img {
+  width: 100%;
+  border-radius: 10px;
+  display: block;
+  margin-bottom: 8px;
+  border: 1px solid var(--line);
+}
+
+.evidence-slot:has(img) {
+  border-style: solid;
+  aspect-ratio: auto;
+  width: 300px;
+  max-width: 100%;
+}
+
 .evidence-slot {
   width: 220px;
   aspect-ratio: 16 / 10;
@@ -1273,18 +1288,58 @@ h2 em, h3 em, .hero-sub em {
 
 /* ---------- liquid layer: morphing aurora blobs ---------- */
 
-.aurora span { filter: blur(84px); }
+.aurora span { filter: blur(58px); } /* crisper edges so the liquid shapes actually read */
 
 @keyframes blobMorph {
-  0%   { border-radius: 46% 54% 58% 42% / 52% 44% 56% 48%; }
-  50%  { border-radius: 58% 42% 44% 56% / 42% 58% 46% 54%; }
-  100% { border-radius: 42% 58% 52% 48% / 56% 46% 58% 42%; }
+  0%   { border-radius: 38% 62% 65% 35% / 58% 36% 64% 42%; }
+  33%  { border-radius: 64% 36% 38% 62% / 36% 64% 38% 64%; }
+  66%  { border-radius: 44% 56% 66% 34% / 62% 40% 60% 38%; }
+  100% { border-radius: 34% 66% 56% 44% / 64% 38% 62% 36%; }
 }
 
-.aurora .a1 { animation: auroraA 30s ease-in-out infinite alternate, blobMorph 16s ease-in-out infinite alternate; }
-.aurora .a2 { animation: auroraB 38s ease-in-out infinite alternate, blobMorph 21s ease-in-out infinite alternate-reverse; }
-.aurora .a3 { animation: auroraC 34s ease-in-out infinite alternate, blobMorph 18s ease-in-out infinite alternate; }
-.aurora .a4 { animation: auroraD 26s ease-in-out infinite alternate, blobMorph 13s ease-in-out infinite alternate-reverse; }
+.aurora .a1 { animation: auroraA 26s ease-in-out infinite alternate, blobMorph 12s ease-in-out infinite alternate; }
+.aurora .a2 { animation: auroraB 32s ease-in-out infinite alternate, blobMorph 16s ease-in-out infinite alternate-reverse; }
+.aurora .a3 { animation: auroraC 28s ease-in-out infinite alternate, blobMorph 14s ease-in-out infinite alternate; }
+.aurora .a4 { animation: auroraD 22s ease-in-out infinite alternate, blobMorph 10s ease-in-out infinite alternate-reverse; }
+
+/* glass: frosted panels so the liquid moves visibly beneath the content */
+.service-card, .cert-card, .spec-card, .t-card, .contact-block, .path-card, .pipeline {
+  background: rgba(13, 13, 21, 0.5);
+  backdrop-filter: blur(18px) saturate(1.4);
+  -webkit-backdrop-filter: blur(18px) saturate(1.4);
+  border-color: rgba(255, 255, 255, 0.11);
+}
+
+/* ---------- accessibility: skip link + visible keyboard focus ---------- */
+
+.skip-link {
+  position: fixed;
+  top: -64px;
+  left: 16px;
+  z-index: 120;
+  background: var(--text);
+  color: #05060a;
+  padding: 13px 22px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  transition: top 0.3s;
+}
+
+.skip-link:focus { top: 14px; }
+
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+@media (max-width: 720px) {
+  .contact-actions .btn { width: 100%; justify-content: center; }
+  .evidence-slot:has(img) { width: 100%; }
+  .aurora span { filter: blur(46px); } /* lighter GPU load on phones */
+}
 
 /* ---------- tap targets ---------- */
 
@@ -1315,7 +1370,17 @@ h2 em, h3 em, .hero-sub em {
 }
 
 @media (max-width: 720px) {
-  .pill-nav a:not(.nav-logo):not(.nav-cta) { display: none; }
+  /* nav stays complete on phones: horizontally scrollable pill instead of hidden links */
+  .pill-nav {
+    max-width: calc(100vw - 16px);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    justify-content: flex-start;
+  }
+  .pill-nav::-webkit-scrollbar { display: none; }
+  .pill-nav a { padding: 11px 13px; font-size: 13px; flex: none; }
+  .pill-nav .nav-cta { padding: 11px 15px; }
   .proof { grid-template-columns: repeat(2, 1fr); }
   .proof-item { border-right: 0; border-top: 1px solid var(--line); }
   .proof-item:nth-child(-n + 2) { border-top: 0; }

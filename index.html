@@ -8,11 +8,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=11" />
+  <link rel="stylesheet" href="css/style.css?v=12" />
   <noscript><style>.reveal { opacity: 1 !important; transform: none !important; }</style></noscript>
 </head>
 <body>
 
+  <a class="skip-link" href="#work">Skip to content</a>
   <canvas id="cosmos" aria-hidden="true"></canvas>
   <div class="halo" aria-hidden="true"></div>
   <div class="aurora" aria-hidden="true"><span class="a1"></span><span class="a2"></span><span class="a3"></span><span class="a4"></span></div>
@@ -69,11 +70,10 @@
       </div>
       <div class="proof-item">
         <span class="proof-num" data-count-to="12" data-suffix="">12</span>
-        <!-- TODO: exact count, e.g. "31 of 33 projects rated 5.0" -->
-        <span class="proof-label">client projects, rated 5.0 by clients</span>
+        <span class="proof-label">client projects, all rated 5.0</span>
       </div>
       <div class="proof-item">
-        <span class="proof-num" data-count-to="4" data-suffix="h">4h</span>
+        <span class="proof-num" data-count-to="2" data-suffix="h">2h</span>
         <span class="proof-label">typical response time, same-day replies</span>
       </div>
     </section>
@@ -148,11 +148,23 @@
             <span>6M-view edit<br />video coming here</span>
           </div>
         </div>
-        <!-- TODO: add analytics screenshots + live post links for the 6M/3M/1.7M edits -->
+        <!-- TODO: save your Meta analytics screenshots into assets/evidence/ with these exact
+             filenames: reach-9m.png, top-posts.png, interactions-188k.png
+             (plus followers-23k.png, used on the social-media page). The slots below wire up
+             automatically once the files exist. -->
         <div class="evidence-row" aria-label="Analytics evidence">
-          <figure class="evidence-slot"><figcaption>6M views &middot; analytics screenshot</figcaption></figure>
-          <figure class="evidence-slot"><figcaption>3M views &middot; analytics screenshot</figcaption></figure>
-          <figure class="evidence-slot"><figcaption>1.7M views &middot; analytics screenshot</figcaption></figure>
+          <figure class="evidence-slot">
+            <img src="assets/evidence/reach-9m.png" alt="Meta analytics: 8.95M reach, 0 from ads" loading="lazy" onerror="this.remove()" />
+            <figcaption>8.95M reach, 0 from ads &middot; Meta analytics</figcaption>
+          </figure>
+          <figure class="evidence-slot">
+            <img src="assets/evidence/top-posts.png" alt="Top posts by reach: 1.8M, 1.6M and 1.4M" loading="lazy" onerror="this.remove()" />
+            <figcaption>Top posts: 1.8M / 1.6M / 1.4M reach</figcaption>
+          </figure>
+          <figure class="evidence-slot">
+            <img src="assets/evidence/interactions-188k.png" alt="188,384 interactions in 90 days" loading="lazy" onerror="this.remove()" />
+            <figcaption>188K interactions in 90 days</figcaption>
+          </figure>
         </div>
         <ul class="project-tags"><li>Instagram Reels</li><li>Video Editing</li><li>Organic Growth</li></ul>
       </article>
@@ -305,7 +317,6 @@
         <div class="service-card reveal">
           <span class="service-num">01</span>
           <h3>AI UGC &amp; Product Ads</h3>
-          <!-- TODO: publication name + link to restore the "published opinion columnist" credential -->
           <p>Avatar-led UGC and cinematic product scenes for paid feeds. I write the scripts myself, so the hook carries the ad, not just the footage.</p>
         </div>
         <div class="service-card reveal">
@@ -368,11 +379,8 @@
             <button class="copy-email" type="button" data-email="muhammadasifsam3@gmail.com">Copy</button>
           </div>
           <div class="contact-actions">
-            <!-- TODO: my WhatsApp number — replace 000000000000 in the wa.me link -->
-            <a class="btn btn-solid" href="https://wa.me/000000000000" target="_blank" rel="noopener">WhatsApp me</a>
-            <!-- TODO: booking link — replace href with your Calendly/Cal.com URL -->
-            <a class="btn btn-solid" href="#contact">Book a call</a>
-            <a class="btn btn-ghost" href="mailto:muhammadasifsam3@gmail.com">Email me your product, I'll reply today</a>
+            <a class="btn btn-solid" href="https://wa.me/923001774494" target="_blank" rel="noopener">WhatsApp me</a>
+            <a class="btn btn-ghost" href="mailto:muhammadasifsam3@gmail.com">Email me</a>
           </div>
         </div>
       </div>
@@ -397,6 +405,6 @@
 
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-  <script src="js/main.js?v=11"></script>
+  <script src="js/main.js?v=12"></script>
 </body>
 </html>

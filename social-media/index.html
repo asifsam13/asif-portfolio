@@ -8,11 +8,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../css/style.css?v=11" />
+  <link rel="stylesheet" href="../css/style.css?v=12" />
   <noscript><style>.reveal { opacity: 1 !important; transform: none !important; } .cert-more { display: block !important; }</style></noscript>
 </head>
 <body>
 
+  <a class="skip-link" href="#services">Skip to content</a>
   <canvas id="cosmos" aria-hidden="true"></canvas>
   <div class="halo" aria-hidden="true"></div>
   <div class="aurora" aria-hidden="true"><span class="a1"></span><span class="a2"></span><span class="a3"></span><span class="a4"></span></div>
@@ -31,7 +32,6 @@
     <header class="hero" id="hero" style="min-height: 80vh;">
       <p class="eyebrow reveal">SOCIAL MEDIA MANAGEMENT</p>
       <h1 class="hero-name reveal">Real followers, <em>no ad spend</em></h1>
-      <!-- TODO: publication name + link to restore the "published opinion columnist" credential -->
       <p class="hero-lede reveal">
         Trend-driven content strategy that builds engaged audiences from zero: content
         calendars, community management, engagement optimization, and copywriting. I grew a
@@ -53,7 +53,7 @@
       <div class="proof-item"><span class="proof-num" data-count-to="3" data-suffix="x">3x</span><span class="proof-label">engagement tripled in 100 days</span></div>
       <div class="proof-item"><span class="proof-num" data-count-to="9" data-suffix="M+">9M+</span><span class="proof-label">organic reach across content</span></div>
       <div class="proof-item"><span class="proof-num" data-count-to="9" data-suffix="">9</span><span class="proof-label">certifications from Meta, Adobe &amp; Semrush</span></div>
-      <div class="proof-item"><span class="proof-num" data-count-to="4" data-suffix="h">4h</span><span class="proof-label">typical response time, same-day replies</span></div>
+      <div class="proof-item"><span class="proof-num" data-count-to="2" data-suffix="h">2h</span><span class="proof-label">typical response time, same-day replies</span></div>
     </section>
 
     <section class="section" id="services">
@@ -81,7 +81,6 @@
         <div class="service-card reveal">
           <span class="service-num">04</span>
           <h3>Copywriting &amp; Scripting</h3>
-          <!-- TODO: publication name + link to restore the "published opinion columnist" credential -->
           <p>Hooks, video scripts, and captions written to convert scrollers into fans.</p>
         </div>
         <div class="service-card reveal">
@@ -113,8 +112,17 @@
             <div><dt>What I did</dt><dd>A carousel-first content system (reviews, standout quotes, consistent branding), narrative flow built for saves and shares, and performance data fed back into the strategy weekly.</dd></div>
             <div><dt>The result</dt><dd>20K followers in under 10 months, and the account became a recognized voice in its niche.</dd></div>
           </dl>
-          <!-- TODO: account handle + URL -->
-          <p class="case-evidence"><span class="evidence-inline">Live account link coming here</span></p>
+          <!-- Evidence: save the followers dashboard screenshot as ../assets/evidence/followers-23k.png -->
+          <div class="evidence-row" aria-label="Analytics evidence">
+            <figure class="evidence-slot">
+              <img src="../assets/evidence/followers-23k.png" alt="Instagram professional dashboard showing 23,678 followers" loading="lazy" onerror="this.remove()" />
+              <figcaption>23.6K followers &middot; account dashboard</figcaption>
+            </figure>
+            <figure class="evidence-slot">
+              <img src="../assets/evidence/reach-9m.png" alt="Meta analytics: 8.95M reach, 0 from ads" loading="lazy" onerror="this.remove()" />
+              <figcaption>8.95M reach, 0 from ads &middot; Meta analytics</figcaption>
+            </figure>
+          </div>
         </div>
       </article>
 
@@ -128,8 +136,13 @@
             <div><dt>What I did</dt><dd>Hook-led captions, prompts people actually answer, fast human replies, and doubling down on the formats the data favored.</dd></div>
             <div><dt>The result</dt><dd>Interaction rate tripled within 100 days, and the lift held after the sprint ended.</dd></div>
           </dl>
-          <!-- TODO: add analytics screenshot for the engagement-tripling claim -->
-          <p class="case-evidence"><span class="evidence-inline">Analytics screenshot coming here</span></p>
+          <!-- Evidence: save the interactions screenshot as ../assets/evidence/interactions-188k.png -->
+          <div class="evidence-row" aria-label="Analytics evidence">
+            <figure class="evidence-slot">
+              <img src="../assets/evidence/interactions-188k.png" alt="188,384 interactions in 90 days, 70% from non-followers" loading="lazy" onerror="this.remove()" />
+              <figcaption>188K interactions in 90 days &middot; 70% non-followers</figcaption>
+            </figure>
+          </div>
         </div>
       </article>
 
@@ -291,11 +304,8 @@
             <button class="copy-email" type="button" data-email="muhammadasifsam3@gmail.com">Copy</button>
           </div>
           <div class="contact-actions">
-            <!-- TODO: my WhatsApp number — replace 000000000000 in the wa.me link -->
-            <a class="btn btn-solid" href="https://wa.me/000000000000" target="_blank" rel="noopener">WhatsApp me</a>
-            <!-- TODO: booking link — replace href with your Calendly/Cal.com URL -->
-            <a class="btn btn-solid" href="#contact">Book a call</a>
-            <a class="btn btn-ghost" href="mailto:muhammadasifsam3@gmail.com">Get a growth idea</a>
+            <a class="btn btn-solid" href="https://wa.me/923001774494" target="_blank" rel="noopener">WhatsApp me</a>
+            <a class="btn btn-ghost" href="mailto:muhammadasifsam3@gmail.com">Email me</a>
           </div>
         </div>
       </div>
@@ -320,6 +330,6 @@
 
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-  <script src="../js/main.js?v=11"></script>
+  <script src="../js/main.js?v=12"></script>
 </body>
 </html>
