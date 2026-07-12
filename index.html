@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Muhammad Asif — AI Video, Editing &amp; Social Growth</title>
-  <meta name="description" content="One partner, three crafts: AI video creation, cinematic video editing, and organic social media growth. Pick the one you need." />
+  <title>Muhammad Asif — AI Video, Editing &amp; Growth</title>
+  <meta name="description" content="AI video, cinematic editing, and organic growth for brands. Recent edits pulled 6M, 3M, and 1.7M views. Email a product link, get a concrete idea back the same day." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=10" />
+  <link rel="stylesheet" href="css/style.css?v=11" />
+  <noscript><style>.reveal { opacity: 1 !important; transform: none !important; }</style></noscript>
 </head>
 <body>
 
@@ -22,99 +23,359 @@
     <a href="ai-video/">AI Video</a>
     <a href="video-editing/">Editing</a>
     <a href="social-media/">Social Growth</a>
-    <a class="nav-cta" href="mailto:muhammadasifsam3@gmail.com">Say hi <span class="arrow">&#8599;</span></a>
+    <a class="nav-cta" href="mailto:muhammadasifsam3@gmail.com">Email me <span class="arrow">&#8599;</span></a>
   </nav>
 
   <div class="shell">
 
-    <header class="hero" id="hero" style="min-height: auto; padding-bottom: 40px;">
+    <!-- ============ HERO: name, one line, the work ============ -->
+    <header class="hero" id="hero">
       <h1 class="hero-name reveal">Muhammad Asif</h1>
-      <p class="hero-sub reveal">One partner, <em>three crafts</em></p>
-      <p class="hero-lede reveal">
-        AI video creation, cinematic editing, and organic social growth: strategy and
-        execution under one roof. Recent work pulled 6M, 3M, and 1.7M views and grew a
-        niche account to 20K followers. Pick the door that fits your project.
-      </p>
-    </header>
-
-    <!-- ============ THREE DOORS ============ -->
-    <section class="section" id="doors" style="padding-top: 10px;">
-      <div class="door-grid">
-        <a class="door reveal" href="ai-video/">
-          <span class="door-num">01</span>
-          <h2>AI Video<br />Creation</h2>
-          <p>UGC ads, cinematic product promos, and Reels built entirely with AI: no studio, no shoot, ready in days.</p>
-          <ul>
-            <li>AI UGC ads with consistent presenters</li>
-            <li>CGI-style product visualization</li>
-            <li>Avatars, voiceover &amp; lip sync</li>
-            <li>Scripted hooks that carry the ad</li>
-          </ul>
-          <span class="door-cta">Enter <span class="arrow">&#8594;</span></span>
-        </a>
-
-        <a class="door reveal" href="video-editing/">
-          <span class="door-num">02</span>
-          <h2>Video<br />Editing</h2>
-          <p>Cinematic edits, poster-grade color, and short-form pacing built to survive the first 3 seconds.</p>
-          <ul>
-            <li>Reels &amp; short-form optimization</li>
-            <li>Color grading &amp; VFX</li>
-            <li>Premiere Pro &amp; CapCut Pro</li>
-            <li>24-hour rush available</li>
-          </ul>
-          <span class="door-cta">Enter <span class="arrow">&#8594;</span></span>
-        </a>
-
-        <a class="door reveal" href="social-media/">
-          <span class="door-num">03</span>
-          <h2>Social Media<br />Management</h2>
-          <p>Real, loyal followers through trend-driven strategy: no ad spend, no bought audiences.</p>
-          <ul>
-            <li>Organic growth strategy</li>
-            <li>Content calendars &amp; planning</li>
-            <li>Community management</li>
-            <li>Elite copywriting &amp; scripting</li>
-          </ul>
-          <span class="door-cta">Enter <span class="arrow">&#8594;</span></span>
-        </a>
+      <p class="hero-sub reveal">AI video, editing &amp; growth <em>that gets watched</em></p>
+      <div class="cta-row reveal">
+        <a class="btn btn-solid" href="#work">See the work</a>
+        <a class="btn btn-ghost" href="mailto:muhammadasifsam3@gmail.com">Email me your product, I'll reply today</a>
       </div>
 
-      <p class="hub-all reveal">Prefer the whole picture in one page? <a href="all/">View the full portfolio</a></p>
-    </section>
+      <div class="hero-reel reveal" id="heroReel">
+        <video id="heroVideo" autoplay muted loop playsinline preload="metadata" poster="assets/poster.jpg">
+          <source src="assets/showreel.mp4" type="video/mp4" />
+        </video>
+        <span class="reel-tag">Showreel</span>
+        <button class="sound-toggle" id="soundToggle" type="button" aria-label="Turn sound on">
+          <span class="sound-icon">&#128263;</span> Tap for sound
+        </button>
+      </div>
 
-    <!-- ============ PROOF BAR ============ -->
+      <div class="scroll-cue" aria-hidden="true">
+        <span>SCROLL</span>
+        <span class="scroll-line"></span>
+      </div>
+    </header>
+
+    <!-- ============ PROOF (real numbers in markup; JS only animates) ============ -->
     <section class="proof" id="proof" aria-label="Results">
       <div class="proof-item">
-        <span class="proof-num" data-count="9" data-suffix="M+">0</span>
+        <span class="proof-num" data-count-to="9" data-suffix="M+">9M+</span>
         <span class="proof-label">organic reach across edited content</span>
       </div>
       <div class="proof-item">
-        <span class="proof-num" data-count="20" data-suffix="K+">0</span>
+        <span class="proof-num" data-count-to="20" data-suffix="K+">20K+</span>
         <span class="proof-label">followers grown in under 10 months</span>
       </div>
       <div class="proof-item">
-        <span class="proof-num" data-count="3" data-suffix="x">0</span>
+        <span class="proof-num" data-count-to="3" data-suffix="x">3x</span>
         <span class="proof-label">engagement tripled in 100 days</span>
       </div>
       <div class="proof-item">
-        <span class="proof-num" data-count="12" data-suffix="">0</span>
-        <span class="proof-label">client projects delivered, almost all rated 5.0</span>
+        <span class="proof-num" data-count-to="12" data-suffix="">12</span>
+        <!-- TODO: exact count, e.g. "31 of 33 projects rated 5.0" -->
+        <span class="proof-label">client projects, rated 5.0 by clients</span>
       </div>
       <div class="proof-item">
-        <span class="proof-num" data-count="9" data-suffix="">0</span>
-        <span class="proof-label">certifications from Meta, Adobe &amp; Semrush</span>
+        <span class="proof-num" data-count-to="4" data-suffix="h">4h</span>
+        <span class="proof-label">typical response time, same-day replies</span>
       </div>
     </section>
 
-    <!-- ============ CONTACT STRIP ============ -->
-    <section class="section" id="connect" style="text-align: center;">
-      <div class="section-head section-head--center reveal">
-        <p class="eyebrow">SAY HI</p>
-        <h2>Not sure which door?<br /><em>Just ask</em></h2>
-        <p class="section-lede" style="margin: 0 auto;">Email a link to your product or account and you'll get back a concrete recommendation, not a pitch deck. Same-day replies, based in Lahore, available worldwide.</p>
+    <!-- ============ WORK: client results first ============ -->
+    <section class="section" id="work">
+      <div class="section-head reveal">
+        <p class="eyebrow">SELECTED WORK</p>
+        <h2>Client work, <em>with receipts</em></h2>
       </div>
-      <a class="btn btn-solid btn-lg reveal" href="mailto:muhammadasifsam3@gmail.com">Email me</a>
+
+      <article class="project reveal">
+        <header class="project-head">
+          <span class="project-num">01</span>
+          <div>
+            <h3>Mold Remover Gel <em>AI UGC Ad</em></h3>
+            <p class="project-role">Client work &middot; AI Video Creator / Editor</p>
+          </div>
+        </header>
+        <p class="project-desc">
+          A 70-second vertical UGC ad built entirely with AI: one consistent on-camera
+          presenter across 8 scenes, animated shot by shot, voiced and lip-synced, then cut
+          with bold TikTok-style captions. Delivered in 1080&times;1920, ready for paid social.
+        </p>
+        <div class="project-media">
+          <div class="media-tile t916" data-drive="1RHdWf2JojDFN2mlDyKp7We9_MvSitLsM" style="background-image:url('https://drive.google.com/thumbnail?id=1RHdWf2JojDFN2mlDyKp7We9_MvSitLsM&amp;sz=w900')" role="button" tabindex="0" aria-label="Play Mold Remover Gel ad"></div>
+        </div>
+        <ul class="project-tags"><li>AI Video Generation</li><li>UGC</li><li>Video Editing</li><li>Short Video Ad</li></ul>
+      </article>
+
+      <article class="project reveal">
+        <header class="project-head">
+          <span class="project-num">02</span>
+          <div>
+            <h3>Alpine Financial <em>Instagram Reels</em></h3>
+            <p class="project-role">Client work &middot; Short-Form Video Editor</p>
+          </div>
+        </header>
+        <p class="project-desc">
+          A recurring series of Instagram Reels for a US-based insurance and financial-services
+          brand, two per week. I turned raw talking-head interviews and B-roll into fast,
+          scroll-stopping cuts with tight pacing, animated subtitles, and music. The client
+          renewed week over week through the full run and closed the contract at 5 stars.
+        </p>
+        <div class="project-media">
+          <div class="media-tile t916" data-yt-short="mzAaM1KJ004" style="background-image:url('https://i.ytimg.com/vi/mzAaM1KJ004/oar2.jpg')" role="button" tabindex="0" aria-label="Play Alpine Financial reel"></div>
+          <div class="media-tile t916" data-yt-short="o25jY-a0YA4" style="background-image:url('https://i.ytimg.com/vi/o25jY-a0YA4/oar2.jpg')" role="button" tabindex="0" aria-label="Play Alpine Financial reel"></div>
+          <div class="media-tile t916" data-yt-short="0_EhZQBg2rQ" style="background-image:url('https://i.ytimg.com/vi/0_EhZQBg2rQ/oar2.jpg')" role="button" tabindex="0" aria-label="Play Alpine Financial short"></div>
+          <div class="media-tile t916" data-yt-short="Uj_me6iMw8Y" style="background-image:url('https://i.ytimg.com/vi/Uj_me6iMw8Y/oar2.jpg')" role="button" tabindex="0" aria-label="Play Alpine Financial short"></div>
+          <div class="media-tile t916" data-yt-short="piXNe4xCVOY" style="background-image:url('https://i.ytimg.com/vi/piXNe4xCVOY/oar2.jpg')" role="button" tabindex="0" aria-label="Play Alpine Financial short"></div>
+        </div>
+        <blockquote class="project-quote">&ldquo;Great to work with, very responsive, hard worker, and saw the vision clearly.&rdquo;<cite>Alpine Financial, 5.0 &#9733;</cite></blockquote>
+        <ul class="project-tags"><li>Video Editing</li><li>Instagram Reels</li><li>Motion Graphics</li></ul>
+      </article>
+
+      <article class="project reveal">
+        <header class="project-head">
+          <span class="project-num">03</span>
+          <div>
+            <h3>The 6M-View Edit <em>Organic Short-Form</em></h3>
+            <p class="project-role">Editor &amp; Strategist</p>
+          </div>
+        </header>
+        <p class="project-desc">
+          The single edit that pulled 6M organic views, followed by edits that reached 3M and
+          1.7M. Hook-first structure, trend-aware pacing, and captions written to hold the
+          scroll.
+        </p>
+        <!-- TODO: add the live post link + video for the 6M-view edit (replace the placeholder tile below) -->
+        <div class="project-media">
+          <div class="media-tile t916 tile-placeholder" aria-label="6M-view edit, link coming soon">
+            <span>6M-view edit<br />video coming here</span>
+          </div>
+        </div>
+        <!-- TODO: add analytics screenshots + live post links for the 6M/3M/1.7M edits -->
+        <div class="evidence-row" aria-label="Analytics evidence">
+          <figure class="evidence-slot"><figcaption>6M views &middot; analytics screenshot</figcaption></figure>
+          <figure class="evidence-slot"><figcaption>3M views &middot; analytics screenshot</figcaption></figure>
+          <figure class="evidence-slot"><figcaption>1.7M views &middot; analytics screenshot</figcaption></figure>
+        </div>
+        <ul class="project-tags"><li>Instagram Reels</li><li>Video Editing</li><li>Organic Growth</li></ul>
+      </article>
+
+      <article class="project reveal">
+        <header class="project-head">
+          <span class="project-num">04</span>
+          <div>
+            <h3>High-Impact Ad Collection <em>3D Animation &amp; Direct Response</em></h3>
+            <p class="project-role">3D Motion Designer &amp; Short-Form Video Editor</p>
+          </div>
+        </header>
+        <p class="project-desc">
+          A curated set of high-converting ads for social and e-commerce: premium 3D product
+          animation (fluid simulations, rigid-body physics, high-fidelity texturing) and
+          direct-response UGC and app promos with 3-second hooks and native formatting.
+        </p>
+        <div class="project-media">
+          <div class="media-tile t916" data-drive="1uo7diMtSHyax5g7x_9UptnUe39BrP05K" style="background-image:url('https://drive.google.com/thumbnail?id=1uo7diMtSHyax5g7x_9UptnUe39BrP05K&amp;sz=w900')" role="button" tabindex="0" aria-label="Play ad"></div>
+          <div class="media-tile t916" data-drive="1CGhg2XEtlFY832xsZ8ZRQHcnbb9ZW0Qg" style="background-image:url('https://drive.google.com/thumbnail?id=1CGhg2XEtlFY832xsZ8ZRQHcnbb9ZW0Qg&amp;sz=w900')" role="button" tabindex="0" aria-label="Play ad"></div>
+          <div class="media-tile t916" data-drive="1BHS-5mM4Xno0cYwwJoI67ePP_iRSINct" style="background-image:url('https://drive.google.com/thumbnail?id=1BHS-5mM4Xno0cYwwJoI67ePP_iRSINct&amp;sz=w900')" role="button" tabindex="0" aria-label="Play ad"></div>
+          <div class="media-tile t916" data-drive="1EQCXGzzuGvb5iEHYd07tiUxKnZ-dS1U6" style="background-image:url('https://drive.google.com/thumbnail?id=1EQCXGzzuGvb5iEHYd07tiUxKnZ-dS1U6&amp;sz=w900')" role="button" tabindex="0" aria-label="Play ad"></div>
+        </div>
+        <ul class="project-tags"><li>3D Product Animation</li><li>Motion Graphics</li><li>UGC</li></ul>
+      </article>
+
+      <div class="more-projects" id="moreProjects" hidden>
+
+        <article class="project">
+          <header class="project-head">
+            <span class="project-num">05</span>
+            <div>
+              <h3>Nescafé Latte <em>Cinematic AI Product Ad</em></h3>
+              <span class="spec-badge">Spec / concept piece, not client work</span>
+              <p class="project-role">Self-initiated demo &middot; AI Video Creator</p>
+            </div>
+          </header>
+          <p class="project-desc">
+            A 10-second cinematic spot for a Nescafé Latte can, built entirely with AI video
+            generation to show what CGI-style product visualization looks like without a studio:
+            macro can reveal, a tumble through coffee beans, then a hero shot with splash and
+            reflection.
+          </p>
+          <div class="project-media">
+            <div class="media-tile t169" data-drive="1OubFjqldX9GONWNDCWjMmr72waNxKMIb" style="background-image:url('https://drive.google.com/thumbnail?id=1OubFjqldX9GONWNDCWjMmr72waNxKMIb&amp;sz=w900')" role="button" tabindex="0" aria-label="Play Nescafé Latte ad"></div>
+          </div>
+          <ul class="project-tags"><li>AI Video Generation</li><li>3D Product Animation</li><li>Motion Design</li></ul>
+        </article>
+
+        <article class="project">
+          <header class="project-head">
+            <span class="project-num">06</span>
+            <div>
+              <h3>Travel Reels <em>for Instagram</em></h3>
+              <p class="project-role">Client work &middot; Video Editor</p>
+            </div>
+          </header>
+          <p class="project-desc">
+            Cinematic travel reels cut from a client's raw trip footage from Jordan. Smooth
+            transitions, color grading, and music sync, paced to keep viewers to the last frame.
+          </p>
+          <div class="project-media">
+            <div class="media-tile t916" data-yt-short="siWjS7_DLcw" style="background-image:url('https://i.ytimg.com/vi/siWjS7_DLcw/oar2.jpg')" role="button" tabindex="0" aria-label="Play travel reel"></div>
+            <div class="media-tile t916" data-yt-short="ndiL1eQU6_o" style="background-image:url('https://i.ytimg.com/vi/ndiL1eQU6_o/oar2.jpg')" role="button" tabindex="0" aria-label="Play travel reel"></div>
+            <div class="media-tile t916" data-yt-short="SRake9cVemA" style="background-image:url('https://i.ytimg.com/vi/SRake9cVemA/oar2.jpg')" role="button" tabindex="0" aria-label="Play travel reel"></div>
+            <div class="media-tile t916" data-yt-short="WumJd8qQeKE" style="background-image:url('https://i.ytimg.com/vi/WumJd8qQeKE/oar2.jpg')" role="button" tabindex="0" aria-label="Play travel reel"></div>
+          </div>
+          <ul class="project-tags"><li>Video Editing</li><li>Travel Video</li><li>Instagram Reels</li></ul>
+        </article>
+
+      </div>
+
+      <div class="view-more-wrap">
+        <button class="btn btn-ghost" id="viewMoreBtn" type="button">View more projects</button>
+      </div>
+    </section>
+
+    <!-- ============ CASE STUDIES ============ -->
+    <section class="section" id="cases">
+      <div class="section-head reveal">
+        <p class="eyebrow">CASE STUDIES</p>
+        <h2>How the <em>results</em> happened</h2>
+      </div>
+
+      <article class="case reveal">
+        <div class="case-info">
+          <span class="case-index">01</span>
+          <h3>Alpine Financial <em>Instagram Reels</em></h3>
+          <p class="case-tagline">Making a "dry" industry survive the first 3 seconds.</p>
+          <dl class="star">
+            <div><dt>The problem</dt><dd>A US-based insurance and financial-services brand whose expertise didn't translate to social. They needed two Reels a week that held attention without looking like corporate ads.</dd></div>
+            <div><dt>What I did</dt><dd>I edited each Reel end to end in Premiere Pro and CapCut Pro: dynamic pacing, bold typography, and sound design on top of a strictly professional brand identity, built to hold viewers past the 3-second mark.</dd></div>
+            <div><dt>The result</dt><dd>A library of on-brand, high-performing Reels. The client renewed week over week and closed the contract at a perfect 5.0.</dd></div>
+          </dl>
+          <blockquote>&ldquo;Great to work with, very responsive, hard worker, and saw the vision clearly.&rdquo;<cite>Agency owner, 5.0 &#9733;</cite></blockquote>
+        </div>
+      </article>
+
+      <article class="case reveal">
+        <div class="case-info">
+          <span class="case-index">02</span>
+          <h3>Curated By Emiel <em>Luxury Antiques</em></h3>
+          <p class="case-tagline">A premium brand presence built from zero.</p>
+          <dl class="star">
+            <div><dt>The problem</dt><dd>A new Scottish antique dealership needed a premium social presence from scratch: brand voice, content calendar, and an engagement strategy aimed at a narrow, luxury-focused audience.</dd></div>
+            <div><dt>What I did</dt><dd>Deep market research, a content roadmap built around each piece's history, and a direct outreach playbook targeting local interior design firms.</dd></div>
+            <div><dt>The result</dt><dd>An actionable launch foundation with the exact cost structure and clarity the client lacked; rated 5.0.</dd></div>
+          </dl>
+          <blockquote>&ldquo;Muhammad is a great person to work with. Extremely strong communicator and goes into great detail from day 1. Highly recommended.&rdquo;<cite>Founder, Curated By Emiel, 5.0 &#9733;</cite></blockquote>
+        </div>
+      </article>
+    </section>
+
+    <!-- ============ TESTIMONIALS (attributed only, outcome first) ============ -->
+    <section class="section section--full" id="testimonials">
+      <div class="section-head section-head--center reveal">
+        <p class="eyebrow">CLIENT WORDS</p>
+        <h2>Word for word, from <em>clients</em></h2>
+      </div>
+      <div class="marquee" data-marquee>
+        <div class="marquee-track">
+          <blockquote class="t-card">
+            <span class="t-outcome">Renewed weekly through the full contract &middot; closed at 5.0</span>
+            &ldquo;Great to work with, very responsive, hard worker, and saw the vision clearly.&rdquo;
+            <cite>Alpine Financial</cite>
+          </blockquote>
+          <blockquote class="t-card">
+            <span class="t-outcome">Launch strategy delivered &middot; rated 5.0</span>
+            &ldquo;Muhammad is a great person to work with. Extremely strong communicator and goes into great detail from day 1. Highly recommended.&rdquo;
+            <cite>Curated By Emiel</cite>
+          </blockquote>
+          <blockquote class="t-card">
+            <span class="t-outcome">Growth consult &middot; rated 5.0</span>
+            &ldquo;Great experience working with Muhammad. He gave me clear, practical guidance to improve my Instagram strategy and growth. Highly recommended!&rdquo;
+            <cite>Israr &middot; Instagram Strategy</cite>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SERVICES / PIPELINE ============ -->
+    <section class="section" id="services">
+      <div class="section-head reveal">
+        <p class="eyebrow">SERVICES</p>
+        <h2>One person, the <em>whole pipeline</em></h2>
+        <p class="section-lede">No stitching together a generator, an editor, and a strategist: brief in, ready-to-post files out.</p>
+      </div>
+
+      <div class="service-grid">
+        <div class="service-card reveal">
+          <span class="service-num">01</span>
+          <h3>AI UGC &amp; Product Ads</h3>
+          <!-- TODO: publication name + link to restore the "published opinion columnist" credential -->
+          <p>Avatar-led UGC and cinematic product scenes for paid feeds. I write the scripts myself, so the hook carries the ad, not just the footage.</p>
+        </div>
+        <div class="service-card reveal">
+          <span class="service-num">02</span>
+          <h3>Cinematic Promos &amp; Reels</h3>
+          <p>Product promos and short-form built for retention: pacing, sound design, and grade tuned per platform. The kind of edits that pulled 6M, 3M, and 1.7M views.</p>
+        </div>
+        <div class="service-card reveal">
+          <span class="service-num">03</span>
+          <h3>Organic Growth &amp; Management</h3>
+          <p>An ongoing content partner, not a one-off edit: strategy, calendar, and posting. I grew a niche Instagram account to 20K followers in under 10 months.</p>
+        </div>
+      </div>
+
+      <div class="pipeline reveal" aria-label="How it's made">
+        <div class="pipe-step"><span>01</span><strong>Script</strong><em>Hooks &amp; captions, written in-house</em></div>
+        <div class="pipe-step"><span>02</span><strong>Generate</strong><em>Seedance 2.0 &middot; Kling 3.0 &middot; Veo 3</em></div>
+        <div class="pipe-step"><span>03</span><strong>Face &amp; Voice</strong><em>HeyGen &middot; Midjourney &middot; ElevenLabs</em></div>
+        <div class="pipe-step"><span>04</span><strong>Cut &amp; Grade</strong><em>Premiere Pro &middot; CapCut Pro</em></div>
+        <div class="pipe-step"><span>05</span><strong>Deliver</strong><em>Ready-to-post, per platform</em></div>
+      </div>
+
+      <p class="cert-strip reveal">Meta, Adobe &amp; Semrush certified &middot; <a href="social-media/#certifications">view all 9 certificates</a></p>
+    </section>
+
+    <!-- ============ CONNECT: orbit + contact block ============ -->
+    <section class="section section--full connect" id="connect">
+      <div class="orbit-stage" id="orbitStage">
+        <div class="orbit-center">
+          <p class="eyebrow">SAY HI</p>
+          <h2>Let's make something<br /><em>people watch</em></h2>
+          <a class="btn btn-solid btn-lg" href="mailto:muhammadasifsam3@gmail.com">Email me your product</a>
+        </div>
+        <div class="orbit-card oc-l" data-drive="1OubFjqldX9GONWNDCWjMmr72waNxKMIb"></div>
+        <div class="orbit-card oc-v" data-drive="1RHdWf2JojDFN2mlDyKp7We9_MvSitLsM"></div>
+        <div class="orbit-card oc-p" data-img="assets/carousel/hamlet_01.jpg"></div>
+        <div class="orbit-card oc-v" data-yt-short="mzAaM1KJ004"></div>
+        <div class="orbit-card oc-v" data-drive="1uo7diMtSHyax5g7x_9UptnUe39BrP05K"></div>
+        <div class="orbit-card oc-v" data-yt-short="siWjS7_DLcw"></div>
+        <div class="orbit-card oc-p" data-img="assets/carousel/crime_cover.jpg"></div>
+        <div class="orbit-card oc-v" data-yt-short="o25jY-a0YA4"></div>
+        <div class="orbit-card oc-v" data-drive="1CGhg2XEtlFY832xsZ8ZRQHcnbb9ZW0Qg"></div>
+        <div class="orbit-card oc-v" data-yt-short="ndiL1eQU6_o"></div>
+        <div class="orbit-card oc-p" data-img="assets/carousel/knight_cover.jpg"></div>
+        <div class="orbit-card oc-v" data-yt-short="0_EhZQBg2rQ"></div>
+        <div class="orbit-card oc-v" data-drive="1BHS-5mM4Xno0cYwwJoI67ePP_iRSINct"></div>
+        <div class="orbit-card oc-v" data-yt-short="SRake9cVemA"></div>
+        <div class="orbit-card oc-v" data-yt-short="Uj_me6iMw8Y"></div>
+        <div class="orbit-card oc-p" data-img="assets/carousel/dragwin_cover.jpg"></div>
+        <div class="orbit-card oc-v" data-drive="1EQCXGzzuGvb5iEHYd07tiUxKnZ-dS1U6"></div>
+        <div class="orbit-card oc-v" data-yt-short="WumJd8qQeKE"></div>
+        <div class="orbit-card oc-v" data-yt-short="piXNe4xCVOY"></div>
+      </div>
+
+      <div class="connect-paths">
+        <div class="contact-block reveal" id="contact">
+          <h3>Email a link to your product and you'll get back a concrete idea, not a pitch deck. Same-day replies.</h3>
+          <div class="contact-email">
+            <code>muhammadasifsam3@gmail.com</code>
+            <button class="copy-email" type="button" data-email="muhammadasifsam3@gmail.com">Copy</button>
+          </div>
+          <div class="contact-actions">
+            <!-- TODO: my WhatsApp number — replace 000000000000 in the wa.me link -->
+            <a class="btn btn-solid" href="https://wa.me/000000000000" target="_blank" rel="noopener">WhatsApp me</a>
+            <!-- TODO: booking link — replace href with your Calendly/Cal.com URL -->
+            <a class="btn btn-solid" href="#contact">Book a call</a>
+            <a class="btn btn-ghost" href="mailto:muhammadasifsam3@gmail.com">Email me your product, I'll reply today</a>
+          </div>
+        </div>
+      </div>
     </section>
 
     <footer class="footer">
@@ -123,14 +384,19 @@
         <a href="ai-video/">AI Video</a>
         <a href="video-editing/">Editing</a>
         <a href="social-media/">Social Growth</a>
-        <a href="all/">Full Portfolio</a>
+        <a href="mailto:muhammadasifsam3@gmail.com">Email</a>
       </nav>
       <span class="footer-note">AI Video &middot; Editing &middot; Growth</span>
     </footer>
   </div>
 
+  <div class="lightbox" id="lightbox" hidden>
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
+    <div class="lightbox-frame" id="lightboxFrame"></div>
+  </div>
+
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-  <script src="js/main.js?v=10"></script>
+  <script src="js/main.js?v=11"></script>
 </body>
 </html>

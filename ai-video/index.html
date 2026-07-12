@@ -8,7 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../css/style.css?v=10" />
+  <link rel="stylesheet" href="../css/style.css?v=11" />
+  <noscript><style>.reveal { opacity: 1 !important; transform: none !important; }</style></noscript>
 </head>
 <body>
 
@@ -18,11 +19,11 @@
   <div class="grain" aria-hidden="true"></div>
 
   <nav class="pill-nav" id="pillNav" aria-label="Main">
-    <a class="nav-logo" href="../">&#8249; Hub</a>
+    <a class="nav-logo" href="../">&#8249; Home</a>
     <a href="#work">Projects</a>
     <a href="#pipeline">How It's Made</a>
     <a href="#connect">Contact</a>
-    <a class="nav-cta" href="mailto:muhammadasifsam3@gmail.com">Say hi <span class="arrow">&#8599;</span></a>
+    <a class="nav-cta" href="mailto:muhammadasifsam3@gmail.com">Get a video idea <span class="arrow">&#8599;</span></a>
   </nav>
 
   <div class="shell">
@@ -32,16 +33,16 @@
       <h1 class="hero-name reveal">AI videos people <em>actually watch</em></h1>
       <p class="hero-lede reveal">
         UGC ads, cinematic product promos, and Reels built entirely with AI: consistent
-        presenters, CGI-style product shots, voiceover and lip sync, delivered ready to
-        post in days, not weeks. No studio, no physical product, no traditional pipeline.
+        presenters, CGI-style product shots, voiceover and lip sync. Ready to post in days,
+        with no studio and no shoot.
       </p>
       <div class="cta-row reveal">
         <a class="btn btn-solid" href="#work">See the work</a>
-        <a class="btn btn-ghost" href="mailto:muhammadasifsam3@gmail.com">Say hi <span class="arrow">&#8599;</span></a>
+        <a class="btn btn-ghost" href="mailto:muhammadasifsam3@gmail.com">Get a free video idea</a>
       </div>
 
       <div class="hero-reel reveal" id="heroReel">
-        <video id="heroVideo" autoplay muted loop playsinline poster="../assets/poster.jpg">
+        <video id="heroVideo" autoplay muted loop playsinline preload="metadata" poster="../assets/poster.jpg">
           <source src="../assets/showreel.mp4" type="video/mp4" />
         </video>
         <span class="reel-tag">Showreel</span>
@@ -57,11 +58,12 @@
     </header>
 
     <section class="proof" aria-label="Results">
-      <div class="proof-item"><span class="proof-num" data-count="9" data-suffix="M+">0</span><span class="proof-label">organic reach across edited content</span></div>
-      <div class="proof-item"><span class="proof-num" data-count="6" data-suffix="M">0</span><span class="proof-label">views on a single edit; then 3M &amp; 1.7M</span></div>
-      <div class="proof-item"><span class="proof-num" data-count="8" data-suffix="">0</span><span class="proof-label">scenes with one consistent AI presenter</span></div>
-      <div class="proof-item"><span class="proof-num" data-count="12" data-suffix="">0</span><span class="proof-label">client projects delivered, almost all rated 5.0</span></div>
-      <div class="proof-item"><span class="proof-num" data-count="4" data-suffix="h">0</span><span class="proof-label">typical response time, same-day replies</span></div>
+      <div class="proof-item"><span class="proof-num" data-count-to="9" data-suffix="M+">9M+</span><span class="proof-label">organic reach across edited content</span></div>
+      <div class="proof-item"><span class="proof-num" data-count-to="6" data-suffix="M">6M</span><span class="proof-label">views on a single edit; then 3M &amp; 1.7M</span></div>
+      <div class="proof-item"><span class="proof-num" data-count-to="8" data-suffix="">8</span><span class="proof-label">scenes with one consistent AI presenter</span></div>
+      <!-- TODO: exact count, e.g. "31 of 33 projects rated 5.0" -->
+      <div class="proof-item"><span class="proof-num" data-count-to="12" data-suffix="">12</span><span class="proof-label">client projects, rated 5.0 by clients</span></div>
+      <div class="proof-item"><span class="proof-num" data-count-to="4" data-suffix="h">4h</span><span class="proof-label">typical response time, same-day replies</span></div>
     </section>
 
     <section class="section" id="work">
@@ -75,29 +77,8 @@
         <header class="project-head">
           <span class="project-num">01</span>
           <div>
-            <h3>Nescafé Latte <em>Cinematic AI Product Ad</em></h3>
-            <p class="project-role">Concept spec spot &middot; AI Video Creator</p>
-          </div>
-        </header>
-        <p class="project-desc">
-          A 10-second cinematic spot for a Nescafé Latte can, built entirely with AI video
-          generation to demo CGI-style product visualization for FMCG and beverage brands.
-          Macro can reveal, a mid-air tumble through coffee beans with neon light trails, then
-          a hero shot with splash graphic and reflection. This caliber of hero shot delivered
-          in hours, not weeks.
-        </p>
-        <div class="project-media">
-          <div class="media-tile t169" data-drive="1OubFjqldX9GONWNDCWjMmr72waNxKMIb" role="button" tabindex="0" aria-label="Play Nescafé Latte ad"></div>
-        </div>
-        <ul class="project-tags"><li>AI Video Generation</li><li>3D Product Animation</li><li>Motion Design</li><li>Short Video Ad</li></ul>
-      </article>
-
-      <article class="project reveal">
-        <header class="project-head">
-          <span class="project-num">02</span>
-          <div>
             <h3>Mold Remover Gel <em>AI UGC Ad</em></h3>
-            <p class="project-role">AI Video Creator / Editor</p>
+            <p class="project-role">Client work &middot; AI Video Creator / Editor</p>
           </div>
         </header>
         <p class="project-desc">
@@ -106,35 +87,52 @@
           with bold TikTok-style captions. Delivered in 1080&times;1920, ready for paid social.
         </p>
         <div class="project-media">
-          <div class="media-tile t916" data-drive="1RHdWf2JojDFN2mlDyKp7We9_MvSitLsM" role="button" tabindex="0" aria-label="Play Mold Remover Gel ad"></div>
+          <div class="media-tile t916" data-drive="1RHdWf2JojDFN2mlDyKp7We9_MvSitLsM" style="background-image:url('https://drive.google.com/thumbnail?id=1RHdWf2JojDFN2mlDyKp7We9_MvSitLsM&amp;sz=w900')" role="button" tabindex="0" aria-label="Play Mold Remover Gel ad"></div>
         </div>
-        <blockquote class="project-quote">&ldquo;This is perfect, exactly what I was looking for.&rdquo;<cite>Client feedback</cite></blockquote>
         <ul class="project-tags"><li>AI Video Generation</li><li>UGC</li><li>Video Editing</li><li>Short Video Ad</li></ul>
       </article>
 
       <article class="project reveal">
         <header class="project-head">
-          <span class="project-num">03</span>
+          <span class="project-num">02</span>
           <div>
             <h3>High-Impact Ad Collection <em>3D Animation &amp; Direct Response</em></h3>
             <p class="project-role">3D Motion Designer &amp; Short-Form Video Editor</p>
           </div>
         </header>
         <p class="project-desc">
-          A curated set of high-converting ads built to maximize engagement and ROAS across
-          social and e-commerce. Two lanes of expertise: premium 3D product animation (fluid
-          simulations, rigid-body physics, high-fidelity texturing) and conversion-focused UGC
-          and app promos (aggressive 3-second hooks, native formatting, clear value-proposition
-          sequencing).
+          A curated set of high-converting ads for social and e-commerce: premium 3D product
+          animation (fluid simulations, rigid-body physics, high-fidelity texturing) and
+          direct-response UGC and app promos with 3-second hooks and native formatting.
         </p>
         <div class="project-media">
-          <div class="media-tile t916" data-drive="1uo7diMtSHyax5g7x_9UptnUe39BrP05K" role="button" tabindex="0" aria-label="Play ad"></div>
-          <div class="media-tile t916" data-drive="1CGhg2XEtlFY832xsZ8ZRQHcnbb9ZW0Qg" role="button" tabindex="0" aria-label="Play ad"></div>
-          <div class="media-tile t916" data-drive="1BHS-5mM4Xno0cYwwJoI67ePP_iRSINct" role="button" tabindex="0" aria-label="Play ad"></div>
-          <div class="media-tile t916" data-drive="1EQCXGzzuGvb5iEHYd07tiUxKnZ-dS1U6" role="button" tabindex="0" aria-label="Play ad"></div>
-          <div class="media-tile t916" data-drive="19i3cF5hhtDeUs9vMaevWUmTO5UaAO7iF" role="button" tabindex="0" aria-label="Play ad"></div>
+          <div class="media-tile t916" data-drive="1uo7diMtSHyax5g7x_9UptnUe39BrP05K" style="background-image:url('https://drive.google.com/thumbnail?id=1uo7diMtSHyax5g7x_9UptnUe39BrP05K&amp;sz=w900')" role="button" tabindex="0" aria-label="Play ad"></div>
+          <div class="media-tile t916" data-drive="1CGhg2XEtlFY832xsZ8ZRQHcnbb9ZW0Qg" style="background-image:url('https://drive.google.com/thumbnail?id=1CGhg2XEtlFY832xsZ8ZRQHcnbb9ZW0Qg&amp;sz=w900')" role="button" tabindex="0" aria-label="Play ad"></div>
+          <div class="media-tile t916" data-drive="1BHS-5mM4Xno0cYwwJoI67ePP_iRSINct" style="background-image:url('https://drive.google.com/thumbnail?id=1BHS-5mM4Xno0cYwwJoI67ePP_iRSINct&amp;sz=w900')" role="button" tabindex="0" aria-label="Play ad"></div>
+          <div class="media-tile t916" data-drive="1EQCXGzzuGvb5iEHYd07tiUxKnZ-dS1U6" style="background-image:url('https://drive.google.com/thumbnail?id=1EQCXGzzuGvb5iEHYd07tiUxKnZ-dS1U6&amp;sz=w900')" role="button" tabindex="0" aria-label="Play ad"></div>
         </div>
         <ul class="project-tags"><li>3D Product Animation</li><li>Motion Graphics</li><li>UGC</li><li>Product Launch</li></ul>
+      </article>
+
+      <article class="project reveal">
+        <header class="project-head">
+          <span class="project-num">03</span>
+          <div>
+            <h3>Nescafé Latte <em>Cinematic AI Product Ad</em></h3>
+            <span class="spec-badge">Spec / concept piece, not client work</span>
+            <p class="project-role">Self-initiated demo &middot; AI Video Creator</p>
+          </div>
+        </header>
+        <p class="project-desc">
+          A 10-second cinematic spot for a Nescafé Latte can, built entirely with AI video
+          generation to show what CGI-style product visualization looks like without a studio:
+          macro can reveal, a tumble through coffee beans, then a hero shot with splash and
+          reflection.
+        </p>
+        <div class="project-media">
+          <div class="media-tile t169" data-drive="1OubFjqldX9GONWNDCWjMmr72waNxKMIb" style="background-image:url('https://drive.google.com/thumbnail?id=1OubFjqldX9GONWNDCWjMmr72waNxKMIb&amp;sz=w900')" role="button" tabindex="0" aria-label="Play Nescafé Latte ad"></div>
+        </div>
+        <ul class="project-tags"><li>AI Video Generation</li><li>3D Product Animation</li><li>Motion Design</li></ul>
       </article>
     </section>
 
@@ -160,26 +158,21 @@
       </div>
     </section>
 
-    <section class="section section--full" id="testimonials">
-      <div class="section-head section-head--center reveal">
-        <p class="eyebrow">CLIENT WORDS</p>
-        <h2>Word for word, from <em>clients</em></h2>
-      </div>
-      <div class="marquee" data-marquee>
-        <div class="marquee-track">
-          <blockquote class="t-card">&ldquo;It was a pleasure working with Muhammad. He was always kind, patient, and committed to finding the right creative direction. He put a lot of effort into understanding my vision, remained open to feedback throughout the process, and brought valuable ideas to the project.&rdquo;<cite>Fantasy Celestial Light &amp; Gems Animation</cite></blockquote>
-          <blockquote class="t-card">&ldquo;This is perfect, exactly what I was looking for.&rdquo;<cite>Mold Remover Gel UGC Ad</cite></blockquote>
-          <blockquote class="t-card">&ldquo;Understood project brief and delivered a quality video on time as a first time without any issues, would highly recommend.&rdquo;<cite>10-Second Birthday Video</cite></blockquote>
-        </div>
-      </div>
-    </section>
-
     <section class="section section--full connect" id="connect" style="padding-top: 60px;">
       <div class="connect-paths" style="margin-top: 0;">
-        <div class="path-card path-card--single reveal">
-          <h3>Have a product that needs video?</h3>
-          <p>Email a link to your product and you'll get back a concrete idea for your first AI video, not a pitch deck. Same-day replies.</p>
-          <a class="btn btn-ghost" href="mailto:muhammadasifsam3@gmail.com">Email me</a>
+        <div class="contact-block reveal" id="contact">
+          <h3>Email a link to your product and you'll get back a concrete idea, not a pitch deck. Same-day replies.</h3>
+          <div class="contact-email">
+            <code>muhammadasifsam3@gmail.com</code>
+            <button class="copy-email" type="button" data-email="muhammadasifsam3@gmail.com">Copy</button>
+          </div>
+          <div class="contact-actions">
+            <!-- TODO: my WhatsApp number — replace 000000000000 in the wa.me link -->
+            <a class="btn btn-solid" href="https://wa.me/000000000000" target="_blank" rel="noopener">WhatsApp me</a>
+            <!-- TODO: booking link — replace href with your Calendly/Cal.com URL -->
+            <a class="btn btn-solid" href="#contact">Book a call</a>
+            <a class="btn btn-ghost" href="mailto:muhammadasifsam3@gmail.com">Get a free video idea</a>
+          </div>
         </div>
       </div>
     </section>
@@ -187,10 +180,10 @@
     <footer class="footer">
       <span>&copy; Muhammad Asif</span>
       <nav aria-label="Footer">
-        <a href="../">Hub</a>
+        <a href="../">Home</a>
         <a href="../video-editing/">Video Editing</a>
         <a href="../social-media/">Social Growth</a>
-        <a href="../all/">Full Portfolio</a>
+        <a href="mailto:muhammadasifsam3@gmail.com">Email</a>
       </nav>
       <span class="footer-note">AI Video Creation</span>
     </footer>
@@ -203,6 +196,6 @@
 
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-  <script src="../js/main.js?v=10"></script>
+  <script src="../js/main.js?v=11"></script>
 </body>
 </html>

@@ -151,16 +151,21 @@ const ytEmbed = (id) => `https://www.youtube-nocookie.com/embed/${id}?autoplay=1
 
 (function tilt() {
   if (prefersReducedMotion || !window.matchMedia("(pointer: fine)").matches) return;
-  document.querySelectorAll(".media-tile").forEach((tile) => {
-    tile.addEventListener("mousemove", (e) => {
-      const r = tile.getBoundingClientRect();
-      const px = (e.clientX - r.left) / r.width - 0.5;
-      const py = (e.clientY - r.top) / r.height - 0.5;
-      tile.style.transform =
-        `perspective(700px) translateY(-5px) rotateX(${(-py * 6).toFixed(2)}deg) rotateY(${(px * 6).toFixed(2)}deg)`;
-    }, { passive: true });
-    tile.addEventListener("mouseleave", () => { tile.style.transform = ""; });
-  });
+  const lean = (els, deg, lift) => {
+    document.querySelectorAll(els).forEach((el) => {
+      el.addEventListener("mousemove", (e) => {
+        const r = el.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width - 0.5;
+        const py = (e.clientY - r.top) / r.height - 0.5;
+        el.style.transform =
+          `perspective(800px) translateY(${lift}px) rotateX(${(-py * deg).toFixed(2)}deg) rotateY(${(px * deg).toFixed(2)}deg)`;
+      }, { passive: true });
+      el.addEventListener("mouseleave", () => { el.style.transform = ""; });
+    });
+  };
+  lean(".media-tile", 6, -5);
+  lean(".service-card, .cert-card, .spec-card", 3.5, -6);
+  lean("#heroReel", 2.2, 0);
 })();
 
 /* ---------- card glow: a soft light that follows the cursor inside cards ---------- */
@@ -185,6 +190,15 @@ const ytEmbed = (id) => `https://www.youtube-nocookie.com/embed/${id}?autoplay=1
 (function heroReel() {
   const video = document.getElementById("heroVideo");
   if (!video) return;
+
+  // on slow / data-saver connections, don't autoplay: show the poster with controls
+  const conn = navigator.connection;
+  if (conn && (conn.saveData || /(^|-)2g/.test(conn.effectiveType || ""))) {
+    video.removeAttribute("autoplay");
+    video.preload = "none";
+    video.controls = true;
+    video.pause();
+  }
 
   // sound toggle: browsers require muted autoplay, so audio arrives on tap
   const toggle = document.getElementById("soundToggle");
@@ -254,22 +268,25 @@ const lightboxAPI = (function lightbox() {
   document.querySelectorAll(".media-tile").forEach((tile) => {
     const { drive, yt, ytShort } = tile.dataset;
 
+    const hasInlineBg = !!tile.style.backgroundImage; // markup ships its own thumb (works without JS)
     if (drive) {
-      tile.style.backgroundImage = `url("${driveThumb(drive)}")`;
+      if (!hasInlineBg) tile.style.backgroundImage = `url("${driveThumb(drive)}")`;
       tile.addEventListener("click", () =>
         lightboxAPI.open("video", drivePreview(drive), tile.classList.contains("t916")));
     } else if (yt) {
-      tile.style.backgroundImage = `url("https://i.ytimg.com/vi/${yt}/hqdefault.jpg")`;
+      if (!hasInlineBg) tile.style.backgroundImage = `url("https://i.ytimg.com/vi/${yt}/hqdefault.jpg")`;
       tile.addEventListener("click", () => lightboxAPI.open("video", ytEmbed(yt)));
     } else if (ytShort) {
-      // shorts have a vertical thumb (oar2); fall back to hqdefault if missing
-      const probe = new Image();
-      probe.onload = () => { tile.style.backgroundImage = `url("https://i.ytimg.com/vi/${ytShort}/oar2.jpg")`; };
-      probe.onerror = () => { tile.style.backgroundImage = `url("https://i.ytimg.com/vi/${ytShort}/hqdefault.jpg")`; };
-      probe.src = `https://i.ytimg.com/vi/${ytShort}/oar2.jpg`;
+      if (!hasInlineBg) {
+        // shorts have a vertical thumb (oar2); fall back to hqdefault if missing
+        const probe = new Image();
+        probe.onload = () => { tile.style.backgroundImage = `url("https://i.ytimg.com/vi/${ytShort}/oar2.jpg")`; };
+        probe.onerror = () => { tile.style.backgroundImage = `url("https://i.ytimg.com/vi/${ytShort}/hqdefault.jpg")`; };
+        probe.src = `https://i.ytimg.com/vi/${ytShort}/oar2.jpg`;
+      }
       tile.addEventListener("click", () => lightboxAPI.open("video", ytEmbed(ytShort), true));
     } else if (tile.dataset.img) {
-      tile.style.backgroundImage = `url("${tile.dataset.img}")`;
+      if (!hasInlineBg) tile.style.backgroundImage = `url("${tile.dataset.img}")`;
       tile.addEventListener("click", () => lightboxAPI.open("image", tile.dataset.img));
     }
 
@@ -362,27 +379,81 @@ const lightboxAPI = (function lightbox() {
 
 /* ---------- counters ---------- */
 
+/* Progressive enhancement only: the REAL number ships in the markup.
+   JS animates up to it when visible, then restores the exact original text.
+   With JS off (or before scroll) the true value is always shown. */
 (function counters() {
-  const nums = document.querySelectorAll(".proof-num");
+  if (prefersReducedMotion) return;
+  const nums = document.querySelectorAll(".proof-num[data-count-to]");
   const io = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (!entry.isIntersecting) return;
       const el = entry.target;
       io.unobserve(el);
-      const target = parseFloat(el.dataset.count);
+      const finalText = el.textContent;
+      const target = parseFloat(el.dataset.countTo);
       const suffix = el.dataset.suffix || "";
-      if (prefersReducedMotion) { el.textContent = target + suffix; return; }
+      if (isNaN(target)) return;
       const start = performance.now();
-      const dur = 1600;
+      const dur = 1400;
       (function step(now) {
         const p = Math.min((now - start) / dur, 1);
         const eased = 1 - Math.pow(1 - p, 3);
-        el.textContent = Math.round(target * eased) + suffix;
+        el.textContent = p < 1 ? Math.round(target * eased) + suffix : finalText;
         if (p < 1) requestAnimationFrame(step);
       })(start);
     });
   }, { threshold: 0.5 });
   nums.forEach((el) => io.observe(el));
+})();
+
+/* ---------- contact block: copy email ---------- */
+
+(function copyEmail() {
+  document.querySelectorAll(".copy-email").forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(btn.dataset.email);
+        const old = btn.textContent;
+        btn.textContent = "Copied!";
+        setTimeout(() => (btn.textContent = old), 1600);
+      } catch (e) {
+        location.href = "mailto:" + btn.dataset.email;
+      }
+    });
+  });
+})();
+
+/* ---------- certifications: view all toggle ---------- */
+
+(function certToggle() {
+  const btn = document.getElementById("certToggle");
+  const more = document.getElementById("certMore");
+  if (!btn || !more) return;
+  btn.addEventListener("click", () => {
+    const opening = more.hidden;
+    more.hidden = !opening;
+    btn.textContent = opening ? "Show fewer" : "View all 9 certificates";
+    if (window.ScrollTrigger) ScrollTrigger.refresh();
+  });
+})();
+
+/* ---------- aurora parallax: background layers drift with scroll ---------- */
+
+(function auroraParallax() {
+  if (prefersReducedMotion) return;
+  const aurora = document.querySelector(".aurora");
+  const halo = document.querySelector(".halo");
+  if (!aurora) return;
+  let ticking = false;
+  const update = () => {
+    aurora.style.transform = `translateY(${(-scrollY * 0.06).toFixed(1)}px)`;
+    if (halo) halo.style.marginTop = `${(-scrollY * 0.03).toFixed(1)}px`;
+    ticking = false;
+  };
+  addEventListener("scroll", () => {
+    if (!ticking) { ticking = true; requestAnimationFrame(update); }
+  }, { passive: true });
 })();
 
 /* ---------- GSAP reveals ---------- */
@@ -420,12 +491,7 @@ const lightboxAPI = (function lightbox() {
     });
   });
 
-  // subtle parallax on the hero reel
-  gsap.to("#heroReel", {
-    yPercent: -6,
-    ease: "none",
-    scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true },
-  });
+  // (hero reel parallax removed: the 3D cursor tilt owns that element's transform now)
 })();
 
 /* ---------- marquee duplication (seamless loop) ---------- */
